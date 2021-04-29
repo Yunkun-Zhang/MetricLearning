@@ -20,7 +20,7 @@ def runKFold(X, y, k, metric):
 
 
 def get_best_k(X, y, metric):
-    k_range = [5, 10, 20, 50, 100]
+    k_range = [3, 5, 7]
     result = []
     ps = Pool(len(k_range))
     for k in k_range:
