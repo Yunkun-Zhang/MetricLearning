@@ -1,14 +1,21 @@
-from metric_learn import LMNN, NCA, LFDA
+from metric_learn import LMNN, NCA, LFDA, ITML, SDML, RCA, LSML, MMC, MLKR
 
 
-def run(X, y, method='lmnn', k=3, d=None):
-    if method == 'lmnn':
-        obj = LMNN(k=k)
-    elif method == 'nca':
-        obj = NCA(n_components=d)
-    elif method == 'lfda':
-        obj = LFDA(n_components=d, k=k)
-    else:
+methods = {'lmnn': LMNN,
+           'nca': NCA,
+           'lfda': LFDA,
+           'itml': ITML,
+           'sdml': SDML,
+           'rca': RCA,
+           'lsml': LSML,
+           'mmc': MMC,
+           'mlkr': MLKR}
+
+
+def run(X, y, method='lmnn', **kwargs):
+    try:
+        obj = methods[method](**kwargs)
+    except KeyError:
         raise ValueError(f'Method {method} not implemented!')
     obj.fit(X, y)
     return obj.get_metric()
