@@ -7,7 +7,7 @@ import time
 parser = argparse.ArgumentParser()
 parser.add_argument('-m', '--method', help='Metric learning method', default='nca')
 parser.add_argument('-k', '--k', help='Number of neighbors to consider', default=3)
-parser.add_argument('-d', '--dim', help='Dimensionality of reduced space', default=None)
+parser.add_argument('-d', '--dim', help='Dimensionality of lda space', default=None)
 args = parser.parse_args()
 
 if __name__ == '__main__':
@@ -18,12 +18,15 @@ if __name__ == '__main__':
     # decide which arguments to add
     kwargs = dict()
     reduce = False
-    if method in []:
+    if method in ['lmnn', 'lfda']:
         kwargs['k'] = k
-    if method in []:
+    if method in ['lmnn', 'nca', 'lfda', 'rca', 'mlkr']:
         kwargs['n_components'] = dim
-    if method in []:
+    if method in ['itml', 'sdml', 'rca', 'mmc', 'mlkr']:
         reduce = True
+    if method == 'sdml':
+        kwargs['balance_param'] = 1e-5
+        kwargs['sparsity_param'] = 1e-5
 
     # load data
     X, X_t, y, y_t = load_data(reduce=reduce)
