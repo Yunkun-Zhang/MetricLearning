@@ -11,8 +11,8 @@ def read(path='../../Animals_with_Attributes2/Features/ResNet101'):
 
 
 def load_data(path='data', reduce=False):
-    X_train = np.load(path + 'lda/X_train.npy') if reduce else np.load(path + '/X_train.npy')
-    X_test = np.load(path + 'lda/X_test.npy') if reduce else np.load(path + '/X_test.npy')
+    X_train = np.load(path + '/lda/X_train.npy') if reduce else np.load(path + '/X_train.npy')
+    X_test = np.load(path + '/lda/X_test.npy') if reduce else np.load(path + '/X_test.npy')
     y_train = np.squeeze(np.load(path + '/y_train.npy'))
     y_test = np.squeeze(np.load(path + '/y_test.npy'))
     return X_train, X_test, y_train, y_test
