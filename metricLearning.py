@@ -13,7 +13,7 @@ params: n_components=49, or try different settings if using original 2048-dim da
 
 (3) LFDA: Local Fisher Discriminant Analysis for Supervised Dimensionality Reduction. Also reduces dimension,
 and is recommended to use original 2048-dim data. Should be fast, so no worries.
-params: k; n_components, recommended to experimented from 8, 16, ..., 256, 512.
+params: k, but maybe using default k=7 is better; n_components, recommended to experimented from 8, 16, ..., 256, 512.
 
 (4) ITML_Supervised: Supervised version of Information Theoretic Metric Learning.
 params: Nothing needs to be specified, recommend to use reduced dim=49.
@@ -21,8 +21,8 @@ params: Nothing needs to be specified, recommend to use reduced dim=49.
 (5) SDML_Supervised: Supervised version of Sparse Distance Metric Learning. Like ITML, supervise in the same way(sampling)
 params: balance_param=1e-5, sparsity_param=1e-5 is used in lmj's work, recommend to use reduced dim=49.
 
-(6) RCA_Supervised: Supervised version of Relevant Components Analysis. lmj uses 49 dim.
-params: n_components=49.
+(6) RCA_Supervised: Supervised version of Relevant Components Analysis. lmj uses reduced 49 dim.
+params: n_components=49, or default, then none.
 
 (7) LSML_Supervised: Supervised version of Least Squared-residual Metric Learning.
 params: Nothing to be specified, but recommend to use original dim=2048.
@@ -31,7 +31,7 @@ params: Nothing to be specified, but recommend to use original dim=2048.
 params: Nothing to be specified, recommend to use reduced dim=49.
 
 (9) MLKR: Metric Learning for Kernel Regression. Quite high computational cost, seems like PCA, but why lmj uses 49 dim?
-params: n_components=49.
+params: n_components=49, or default, then none.
 """
 
 
