@@ -1,4 +1,4 @@
-from KNN import runKNN
+from KNN import runKNN, reduce_by_metric
 from dataPreprocessing import load_data
 from metricLearning import run
 import argparse
@@ -35,8 +35,11 @@ if __name__ == '__main__':
     e = time.time() - s
     print(f'Performing metric learning...Done. Time: {e:.4f}s.')
 
+    X = reduce_by_metric(X, metric)
+    X_t = reduce_by_metric(X_t, metric)
+
     print('Running KNN...', end='\r')
-    score = runKNN(X, y, X_t, y_t, k=k, metric=metric)
+    score = runKNN(X, y, X_t, y_t, k=k)
     print(f'Running KNN...Done. KNN score: {score:.6f}.')
 
     with open('results.txt', 'a') as f:

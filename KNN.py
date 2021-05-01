@@ -2,6 +2,11 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.model_selection import KFold
 from multiprocessing import Pool
 from dataPreprocessing import load_data
+import tensorflow as tf
+
+
+def reduce_by_metric(X, components):
+    return tf.matmul(X, tf.transpose(components))
 
 
 def runKNN(X=None, y=None, X_t=None, y_t=None, k=5, metric='minkowski'):

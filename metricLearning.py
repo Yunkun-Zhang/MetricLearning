@@ -57,4 +57,4 @@ def run(X, y, method='lmnn', **kwargs):
     except KeyError:
         raise ValueError(f'Method {method} not implemented!')
     obj.fit(X, y)
-    return obj.get_metric()
+    return obj.components_
